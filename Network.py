@@ -7,13 +7,19 @@ import matplotlib.pyplot as plt
 # https://plotly.com/python/network-graphs/
 # https://dash.plotly.com/cytoscape
 
-# grafo di test con matplotlib
+# 1. grafo di test con matplotlib
 Q = nx.Graph()
 Q.add_nodes_from([1, 2, 3, 4])
 Q.add_edges_from([(1, 2), (1, 3), (2, 3), (1, 4)])
 nx.draw(Q, pos={1: [0.556, 0.189], 2: [0.3, 0.43], 3: [0.70, 0.2], 4: [0.3, 0.5]}, with_labels=True, font_weight='bold')
 
-# grafo di prova con plotly
+
+
+# 2. grafo di prova con plotly
+
+# inserire percorso
+path = "C:/Users/ECappella/OneDrive - Bip/Desktop/prova_grafo_1.html"
+
 P = nx.Graph()
 P.add_nodes_from([(1, {'pos': [0.856, 0.6], 'text':'Daje'}), (2, {'pos': [0.3, 0.43], 'text':'tutta'}),
                   (3, {'pos': [0.70, 0.2], 'text':'Forza'}), (4, {'pos': [0.3, 0.5], 'text':'lupacchiotti'})])
@@ -103,7 +109,7 @@ figP.add_trace(go.Scatter(
 ))
 
 
-figP.write_html("C:/Users/ECappella/OneDrive - Bip/Desktop/prova_grafo_1.html")
+figP.write_html(path)
 
 # figP.show()
 P.clear()
