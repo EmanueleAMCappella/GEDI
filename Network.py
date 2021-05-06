@@ -21,8 +21,11 @@ nx.draw(Q, pos={1: [0.556, 0.189], 2: [0.3, 0.43], 3: [0.70, 0.2], 4: [0.3, 0.5]
 path = "C:/Users/ECappella/OneDrive - Bip/Desktop/prova_grafo_1.html"
 
 P = nx.Graph()
-P.add_nodes_from([(1, {'pos': [0.856, 0.6], 'text':'Daje'}), (2, {'pos': [0.3, 0.43], 'text':'tutta'}),
-                  (3, {'pos': [0.70, 0.2], 'text':'Forza'}), (4, {'pos': [0.3, 0.5], 'text':'lupacchiotti'})])
+P.add_nodes_from([(1, {'pos': [0.856, 0.6], 'text':'User & Behavioural Clustering'}),
+                  (2, {'pos': [0.3, 0.43], 'text':'Ottimizzazione A/B testing'}),
+                  (3, {'pos': [0.70, 0.2], 'text':'Scenario Analysis'}),
+                  (4, {'pos': [0.3, 0.5], 'text':'Upselling'})])
+
 P.add_edges_from([(1, 2), (1, 3), (2, 3), (1, 4)])
 
 # parsing coordinate degli edge
@@ -88,7 +91,7 @@ P_node_trace.marker.color = node_adjacencies
 # metti insieme in figura plotly tutti gli elementi
 figP = go.Figure(data=[edge_traceP, P_node_trace],
              layout=go.Layout(
-                title='<br>Network graph made with Python',
+                title='<br>Relationship between GEDI Use Cases',
                 titlefont_size=16,
                 showlegend=False,
                 hovermode='closest',
@@ -104,7 +107,7 @@ figP.add_trace(go.Scatter(
     y=P_node_y,
     mode="text",
     name="Markers and Text",
-    text=["Daje", "tutta", "forza", "Lupacchiotti"],
+    text=["UA09", "UA07", "UA12", "UA03"],
     textposition="bottom center"
 ))
 
