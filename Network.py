@@ -6,12 +6,14 @@ import matplotlib.pyplot as plt
 # https://towardsdatascience.com/tutorial-network-visualization-basics-with-networkx-and-plotly-and-a-little-nlp-57c9bbb55bb9
 # https://plotly.com/python/network-graphs/
 # https://dash.plotly.com/cytoscape
+# Text and annotations
+# https://plotly.com/python/text-and-annotations/#text-on-scatter-plots-with-graph-objects
 
 # 1. grafo di test con matplotlib
-Q = nx.Graph()
-Q.add_nodes_from([1, 2, 3, 4])
-Q.add_edges_from([(1, 2), (1, 3), (2, 3), (1, 4)])
-nx.draw(Q, pos={1: [0.556, 0.189], 2: [0.3, 0.43], 3: [0.70, 0.2], 4: [0.3, 0.5]}, with_labels=True, font_weight='bold')
+# Q = nx.Graph()
+# Q.add_nodes_from([1, 2, 3, 4])
+# Q.add_edges_from([(1, 2), (1, 3), (2, 3), (1, 4)])
+# nx.draw(Q, pos={1: [0.556, 0.189], 2: [0.3, 0.43], 3: [0.70, 0.2], 4: [0.3, 0.5]}, with_labels=True, font_weight='bold')
 
 
 
@@ -44,7 +46,7 @@ for P_edge in P.edges():
 # e ora le plotti
 edge_traceP = go.Scatter(
     x=P_edge_x, y=P_edge_y,
-    line=dict(width=0.5, color='#888'),
+    line=dict(width=1, color='black'),
     hoverinfo='none',
     mode='lines')
 
@@ -92,7 +94,7 @@ P_node_trace.marker.color = node_adjacencies
 figP = go.Figure(data=[edge_traceP, P_node_trace],
              layout=go.Layout(
                 title='<br>Relationship between GEDI Use Cases',
-                titlefont_size=16,
+                titlefont_size=24,
                 showlegend=False,
                 hovermode='closest',
                 margin=dict(b=20,l=5,r=5,t=40),
@@ -101,15 +103,16 @@ figP = go.Figure(data=[edge_traceP, P_node_trace],
                 )
 
 # aggiungi etichetta
-# https://plotly.com/python/text-and-annotations/
 figP.add_trace(go.Scatter(
     x=P_node_x,
     y=P_node_y,
     mode="text",
     name="Markers and Text",
     text=["UA09", "UA07", "UA12", "UA03"],
-    textposition="bottom center"
+    textposition="top left",
+    textfont_size=16
 ))
+
 
 
 figP.write_html(path)
