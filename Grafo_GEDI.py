@@ -17,12 +17,18 @@ P.add_nodes_from([
                   (9, {'pos': [6.5, 16], 'text':'Scenario Analysis'}),
                   (10, {'pos': [13, 10], 'text':'Customer Journey'}),
                   (11, {'pos': [9.5, 11.5], 'text':'NBA per Acquisition'}),
-                  (12, {'pos': [11, 14], 'text':'Customer Journey'}),
-                  (13, {'pos': [14, 15], 'text':'Customer Journey'}),
-                  (14, {'pos': [16, 17], 'text':'Customer Journey'}),
-                  (15, {'pos': [17, 15], 'text':'Customer Journey'}),
-                  (16, {'pos': [18, 12.5], 'text':'Customer Journey'}),
-                  (17, {'pos': [17, 10], 'text':'Customer Journey'})
+                  (12, {'pos': [11, 14], 'text':'NBA per CC'}),
+                  (13, {'pos': [14, 15], 'text':'Cost Forecast'}),
+                  (14, {'pos': [16, 17], 'text':'Smart Closing'}),
+                  (15, {'pos': [17, 15], 'text':'Revenue Forecast'}),
+                  (16, {'pos': [18, 12.5], 'text':'Churn'}),
+                  (17, {'pos': [17, 10], 'text':'Personalizzazione Offerta'}),
+                  (18, {'pos': [11, 3], 'text':'Social Curation'}),
+                  (19, {'pos': [13, 5], 'text':'Social Alert'}),
+                  (20, {'pos': [15.5, 7.5], 'text':'Smart Archive'}),
+                  (21, {'pos': [19, 5], 'text':'Reality Bridge'}),
+                  (22, {'pos': [16, 4], 'text':'Ticket AutoRouting'}),
+                  (23, {'pos': [15, 2], 'text':'Content Tagging'})
                   ])
 
 P.add_edges_from([(3, 6), (4, 6), (5, 6), (7, 6), (8, 6), (9, 6), (8, 9),
@@ -92,7 +98,7 @@ P_node_trace.marker.color = node_adjacencies
 figP = go.Figure(data=[edge_traceP, P_node_trace],
              layout=go.Layout(
                 title='<br>Relationship between GEDI Use Cases',
-                titlefont_size=24,
+                titlefont_size=20,
                 showlegend=False,
                 hovermode='closest',
                 margin=dict(b=20,l=5,r=5,t=40),
@@ -107,7 +113,7 @@ figP.add_trace(go.Scatter(
     mode="text",
     name="Markers and Text",
     text=["UA01", "UA02", "UA03", "UA04", "UA05", "UA06", "UA07", "UA08", "UA09", "UA10",
-          "UA11", "UA012", "UA13", "UA14", "UA15", "UA16", "UA17"],
+          "UA11", "UA012", "UA13", "UA14", "UA15", "UA16", "UA17", "UA18", "UA19", "UA20", "UA21", "UA22", "UA23"],
     textposition="top left",
     textfont_size=16
 ))
