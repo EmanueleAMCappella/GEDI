@@ -15,10 +15,18 @@ P.add_nodes_from([
                   (7, {'pos': [2, 10.5], 'text':'Dynamic Paywall'}),
                   (8, {'pos': [3, 15], 'text':'Ottimizzazione'}),
                   (9, {'pos': [6.5, 16], 'text':'Scenario Analysis'}),
-                  (10, {'pos': [13, 10], 'text':'Customer Journey'})
+                  (10, {'pos': [13, 10], 'text':'Customer Journey'}),
+                  (11, {'pos': [9.5, 11.5], 'text':'NBA per Acquisition'}),
+                  (12, {'pos': [11, 14], 'text':'Customer Journey'}),
+                  (13, {'pos': [14, 15], 'text':'Customer Journey'}),
+                  (14, {'pos': [16, 17], 'text':'Customer Journey'}),
+                  (15, {'pos': [17, 15], 'text':'Customer Journey'}),
+                  (16, {'pos': [18, 12.5], 'text':'Customer Journey'}),
+                  (17, {'pos': [17, 10], 'text':'Customer Journey'})
                   ])
 
-P.add_edges_from([(3, 6), (4, 6), (5, 6), (7, 6), (8, 6), (9, 6), (8, 9), (10, 6)])
+P.add_edges_from([(3, 6), (4, 6), (5, 6), (7, 6), (8, 6), (9, 6), (8, 9),
+                  (10, 6), (10, 11), (10, 12), (10, 13), (10, 15), (10, 16), (10, 17), (13, 14), (14, 15)])
 
 # parsing coordinate degli edge
 P_edge_x = []
@@ -98,7 +106,8 @@ figP.add_trace(go.Scatter(
     y=P_node_y,
     mode="text",
     name="Markers and Text",
-    text=["UA01", "UA02", "UA03", "UA04", "UA05", "UA06", "UA07", "UA08", "UA09", "UA10"],
+    text=["UA01", "UA02", "UA03", "UA04", "UA05", "UA06", "UA07", "UA08", "UA09", "UA10",
+          "UA11", "UA012", "UA13", "UA14", "UA15", "UA16", "UA17"],
     textposition="top left",
     textfont_size=16
 ))
