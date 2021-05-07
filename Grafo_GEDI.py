@@ -14,7 +14,7 @@ P.add_nodes_from([
                   (6, {'pos': [7, 9.5], 'text':'User Clustering'}),
                   (7, {'pos': [2, 10.5], 'text':'Dynamic Paywall'}),
                   (8, {'pos': [3, 15], 'text':'Ottimizzazione'}),
-                  (9, {'pos': [6.5, 16], 'text':'Scenario Analysis'}),
+                  (9, {'pos': [5.5, 15], 'text':'Scenario Analysis'}),
                   (10, {'pos': [13, 10], 'text':'Customer Journey'}),
                   (11, {'pos': [9.5, 11.5], 'text':'NBA per Acquisition'}),
                   (12, {'pos': [11, 14], 'text':'NBA per CC'}),
@@ -22,7 +22,7 @@ P.add_nodes_from([
                   (14, {'pos': [16, 17], 'text':'Smart Closing'}),
                   (15, {'pos': [17, 15], 'text':'Revenue Forecast'}),
                   (16, {'pos': [18, 12.5], 'text':'Churn'}),
-                  (17, {'pos': [17, 10], 'text':'Personalizzazione Offerta'}),
+                  (17, {'pos': [4.5, 17], 'text':'Personalizzazione Offerta'}),
                   (18, {'pos': [11, 3], 'text':'Social Curation'}),
                   (19, {'pos': [13, 5], 'text':'Social Alert'}),
                   (20, {'pos': [15.5, 7.5], 'text':'Smart Archive'}),
@@ -32,7 +32,8 @@ P.add_nodes_from([
                   ])
 
 P.add_edges_from([(3, 6), (4, 6), (5, 6), (7, 6), (8, 6), (9, 6), (8, 9),
-                  (10, 6), (10, 11), (10, 12), (10, 13), (10, 15), (10, 16), (10, 17), (13, 14), (14, 15)])
+                  (10, 6), (10, 11), (10, 12), (10, 13), (10, 15), (10, 16), (10, 17), (13, 14), (14, 15),
+                  (8, 17), (9, 17)])
 
 # parsing coordinate degli edge
 P_edge_x = []
@@ -54,7 +55,6 @@ edge_traceP = go.Scatter(
     hoverinfo='none',
     mode='lines')
 
-
 # parsing coordinate dei nodes x e y
 P_node_x = [P.nodes[node]['pos'][0] for node in P.nodes()]
 P_node_y = [P.nodes[node]['pos'][1] for node in P.nodes()]
@@ -65,15 +65,15 @@ labels = [P.nodes[node]['text'] for node in P.nodes()]
 # e ora plotti i nodi, con le etichette in hovering
 P_node_trace = go.Scatter(
     x=P_node_x, y=P_node_y,
-    text= labels,
+    text=labels,
     mode='markers',
     hoverinfo='text',
     marker=dict(
         showscale=True,
-        colorscale='Greens',
+        colorscale= 'YlGnBu', #'Greens',
         reversescale=True,
         color=[],
-        size=20, #aumenta dimensioni del punto
+        size=20,  # aumenta dimensioni del punto
         colorbar=dict(
             thickness=15,
             title='Node Connections',
@@ -82,17 +82,12 @@ P_node_trace = go.Scatter(
         ),
         line_width=2))
 
-
 # valore di adiacenza per gestire il colore
 node_adjacencies = []
-#node_text = []
 for node, adjacencies in enumerate(P.adjacency()):
     node_adjacencies.append(len(adjacencies[1]))
-    #node_text.append('# of connections: '+str(len(adjacencies[1])))
 
 P_node_trace.marker.color = node_adjacencies
-#node_trace.text = node_text
-
 
 # metti insieme in figura plotly tutti gli elementi
 figP = go.Figure(data=[edge_traceP, P_node_trace],
@@ -112,17 +107,20 @@ figP.add_trace(go.Scatter(
     y=P_node_y,
     mode="text",
     name="Markers and Text",
-    text=["UA01", "UA02", "UA03", "UA04", "UA05", "UA06", "UA07", "UA08", "UA09", "UA10",
-          "UA11", "UA012", "UA13", "UA14", "UA15", "UA16", "UA17", "UA18", "UA19", "UA20", "UA21", "UA22", "UA23"],
+    text=["UA01-A", "UA01-B", "UA03", "UA05", "UA06", "UA09", "UA18", "UA07", "UA12", "UA10",
+          "UA11", "UA022", "UA13", "UA21", "UA08", "UA04", "UA27", "UA19", "UA25", "UA15", "UA17", "UA29", "UA20"],
     textposition="top left",
     textfont_size=16
 ))
 
 
+# aggiungi una singola freccia, questa è la funzione da utilizzare:
+# https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx_edges.html
 
+
+# scrivi file html
 figP.write_html(path)
 
-# figP.show()
 P.clear()
 
 
