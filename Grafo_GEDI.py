@@ -97,8 +97,8 @@ figP = go.Figure(data=[edge_traceP, P_node_trace],
                 showlegend=False,
                 hovermode='closest',
                 # margin=dict(b=20,l=5,r=5,t=40),
-                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
-                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+                xaxis=dict(showgrid=True, zeroline=False, showticklabels=False),  # showgrid=False se vuoi eliminarla...
+                yaxis=dict(showgrid=True, zeroline=False, showticklabels=False))
                 )
 
 # aggiungi etichetta
@@ -117,7 +117,6 @@ figP.add_trace(go.Scatter(
 
 # aggiungi una singola freccia, questa è la funzione da utilizzare:
 # https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_networkx_edges.html
-
 
 # scrivi file html
 figP.write_html(path)
