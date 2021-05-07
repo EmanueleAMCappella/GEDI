@@ -93,24 +93,25 @@ P_node_trace.marker.color = node_adjacencies
 figP = go.Figure(data=[edge_traceP, P_node_trace],
              layout=go.Layout(
                 title='<br>Relationship between GEDI Use Cases',
-                titlefont_size=20,
+                titlefont_size=24,
                 showlegend=False,
                 hovermode='closest',
-                margin=dict(b=20,l=5,r=5,t=40),
+                # margin=dict(b=20,l=5,r=5,t=40),
                 xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
                 yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
                 )
 
 # aggiungi etichetta
+# https://plotly.com/python/text-and-annotations/
 figP.add_trace(go.Scatter(
-    x=P_node_x,
-    y=P_node_y,
+    x=[x+0.35 for x in P_node_x],  # sposta un pò in alto le etichette
+    y=[x+0.35 for x in P_node_y],
     mode="text",
     name="Markers and Text",
     text=["UA01-A", "UA01-B", "UA03", "UA05", "UA06", "UA09", "UA18", "UA07", "UA12", "UA10",
           "UA11", "UA022", "UA13", "UA21", "UA08", "UA04", "UA27", "UA19", "UA25", "UA15", "UA17", "UA29", "UA20"],
     textposition="top left",
-    textfont_size=16
+    textfont={"color": "Black", "family": "Arial", "size": 16}
 ))
 
 
